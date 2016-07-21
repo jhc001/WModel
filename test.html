@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<HTML>
+ <HEAD>
+  <TITLE> World Model </TITLE>
+	<meta charset="gbk" />
+	<style type="text/css">
+	</style>
+	<SCRIPT type="text/javascript" src="model.js"></script>
+	<SCRIPT type="text/javascript" src="query.js"></script>
+	<style type="text/css">
+		div{
+			width:10px;
+			height:10px;
+			background:red;
+			margin:1px 1px 0 0;
+
+		}
+	</style>
+ </HEAD>
+ <body>
+  <div></div>
+  <div></div>
+  <div></div>
+ </body>
+ <SCRIPT LANGUAGE="JavaScript">
+	Element.prototype.say = function(){Point(this.offsetLeft,this.offsetTop)};
+	var  p = $("div")[2].getPoint();
+	alert(p.y);
+ </SCRIPT>
+</html>
