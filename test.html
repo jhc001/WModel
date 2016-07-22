@@ -11,20 +11,39 @@
 		div{
 			width:10px;
 			height:10px;
-			background:red;
 			margin:1px 1px 0 0;
 
 		}
 	</style>
  </HEAD>
  <body>
-  <div></div>
-  <div></div>
-  <div></div>
+ 
+ <div id="0" style="width:300px;height:300px;background:green">
+	<div  pass="10"></div>
+	<div  pass="10"></div>
+	<div  pass="10"></div>
+	<div  pass="10"></div>
+	<div  pass="10"></div>
+	<div  pass="10"></div>
+	<div  pass="10"></div>
+	<div  pass="10"></div>
+	<div  pass="10"></div>
+	<div  pass="10"></div>
+	<div  pass="10"></div>
+	<div  pass="10"></div>
+	<div  pass="10"></div>
+ </div>
+ 
  </body>
  <SCRIPT LANGUAGE="JavaScript">
-	Element.prototype.say = function(){Point(this.offsetLeft,this.offsetTop)};
-	var  p = $("div")[2].getPoint();
-	alert(p.y);
- </SCRIPT>
+	var d = $("div");
+	var g =God(d[0]);
+	/*
+	setInterval(function(){
+		var p = d[1].getPoint();
+		d[1].style.left = (p.x+2)+"px";
+		d[1].style.top = (p.y+2)+"px";
+	},20);
+	*/
+</SCRIPT>
 </html>
