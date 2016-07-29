@@ -12,7 +12,7 @@
         if(!e) throw 'the e is not be null';
         var p1 = this.getPoint();
         var p2 = e.getPoint();
-        return new Point(p1.x-p2.x,p1.y-p2.y);
+        return new Point(p2.x-p1.x,p2.y-p1.y);
     };
 
     function God(env){
@@ -31,27 +31,33 @@
     };
 
     God.prototype.initElement = function(obj){
-        var p = this.randomPoint();
-        
         $(obj).css({position:"absolute",
                     display:"inline-block",
                     width:this.d+"px",
                     height:this.d+"px",
                     background:"red"});
-        obj.style.left = p.x+"px";
-        obj.style.top = p.y+"px";
+        var info = {};
+        obj.info = info;
+        var mess = $(obj).attr("mass")||1;
+        info.mess = parseInt(mess);
     };
 
    God.prototype.randomPoint = function(){
         var x = Math.random()*(this.env.offsetWidth-this.d);
         var y = Math.random()*(this.env.offsetHeight-this.d);
-       
         var rx = parseInt(x)+this.env.offsetLeft;
         var ry = parseInt(y)+this.env.offsetTop;
-        if(rx>300 || ry>300){
-            console.log("fasdfsd");
-        }
         return new Point(rx,ry);
+   }
+
+   God.setPoint = function(dom,p){
+        if(!dom) throw "the dom is not find";
+        var left = this.env.offsetLeft + p.x;
+        var top = this.env.offsetTop + p.y;
+        if(!(dom.parentNode===this.env)){
+            this.env.appendChild(dom);
+        }
+        $(dom).css({left:left+"px",top:top+"px"});
    }
 
     God.prototype.init = function(){
@@ -62,12 +68,10 @@
             var e = divs[i];
             this[i]=e;
             this.length++;
-            var info ={};
-            e.info = info;
             this.initElement(e);
         }
-     };
-
+     }
+     
     window.God = God;
 
 }())
